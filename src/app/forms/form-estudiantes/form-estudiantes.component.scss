@@ -1,0 +1,181 @@
+#form-register {
+  background-color: rgb(155, 156, 156);
+  padding: 10px;
+}
+
+h1 {
+  font-size: 1.2em;
+  color: #000000;
+  margin-bottom: 2px;
+  text-align: left;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+h3 {
+  font-size: 1.7em;
+  color: #ffffff;
+  margin-bottom: 5px;
+  padding-bottom: 6px;
+  text-align: center;
+  background: #007c61;
+}
+
+.title_rounded {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-color: #007c61;
+}
+
+.rounded {
+  border-radius: 7px;
+  border-color: #007c61;
+}
+
+.container{
+  background-color:#ffffff;
+  border-radius: 10px;
+  padding-right: 0%;  
+  padding-left: 0%;
+  padding-bottom: 20%;
+  border: #000000;
+}
+
+.form-row{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h1,.form-estudiantes-text-left{
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #383a39;
+}
+
+.btn-redondo{
+  border-radius: 50%;
+}
+
+.btn-outline-danger{
+  outline-color: #D60404;
+}
+
+.btn-outline-green{
+  border-radius: 50%;
+  position:relative; 
+  left:50%;
+  margin-top: 5px;
+  color: #007c61;
+  border-color: #007c61
+}
+
+.btn-add-diagnostico{
+  border-radius: 50%;
+  position:relative; 
+  left:28%;
+  margin-top: 5px;
+  color: #007c61;
+  border-color: #007c61;
+}
+
+.btn-add-diagnostico:hover, .btn-outline-green:hover{
+  background-color: #007c61;
+  color: white;
+}
+
+.btn-cancel{
+  background-color: #D60404;
+  color: white;
+  margin-left: 20px;
+}
+
+.btn-confirm{
+  background-color: #007c61;
+  color: white;
+}
+
+.center-image{
+  display: flex;
+  justify-content: center;
+}
+
+.div-estado{
+  height: 80px;
+}
+
+.inlineblock{
+  display: inline-block;
+}
+
+.form-row, .row{
+  margin: 0px
+}
+
+#fechaDeNacimiento_id{
+  height: 38px;
+  width: 100%;
+}
+
+.input-fecha{
+  height: 38px;
+  width: 100%;
+  margin-left:0px;
+}
+
+.byside{
+  float:left;
+  margin: 1%;
+  margin-left: 50px;
+}
+
+.btn-cancel{
+  background-color: #D60404;
+  color: white;
+  margin-left: 20px;
+}
+
+.btn-confirm{
+  background-color: #007c61;
+  color: white;
+}
+
+.col1{
+  padding-left: 0px;
+  width: 20%;
+}
+
+.col2, .col3 , .col4{
+  padding-left: 0px;
+  width: 29%;
+}
+
+.col5 {
+  padding-left: 0px;
+  text-align: center;
+  width: 17%;
+
+}
+
+.col6{
+  text-align: center;
+  padding-left: 0px;
+  width: 3%;
+}
+
+
+.btn-eliminar-registro{
+  border-radius: 50%;
+  background-color: transparent;
+  color: #D60404;
+  border:1px solid #D60404;
+}
+
+.btn-eliminar-registro:hover{
+  background-color: #D60404;
+  color:whitesmoke;
+}
+
+.last-row{
+  padding-left: 0px;
+  width: 100%;
+}

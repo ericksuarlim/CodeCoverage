@@ -1,0 +1,159 @@
+<div class="container mb-3 pb-3 mt-4">
+  <h2 class="color title_rounded" *ngIf="seEstaRegistrando"> Registrar Estudiante</h2>
+  <h2 class="color title_rounded" *ngIf="!seEstaRegistrando"> Editar Estudiante</h2>
+  <form>
+
+    <div class="form-row mb-2 color-back pb-2 pt-2 ml-0 mr-0">
+
+
+      <div class="form-row col-md-4">
+        <div class="form-row col-md-12 mb-3">
+          <label for="brand" class="col-md-3">Nombres</label>
+          <div class="col-md-8">
+            <input type="text" name="nombres" class="form-control rounded" id="nombres_id"
+              [(ngModel)]="estudiante.nombres" (ngModelChange)="validarEstudiante()" maxlength="30" value required>
+            <div *ngIf="!validacion.nombres && validacion.mostrarError" class="text-danger">Ingresa un nombre válido
+              (A-Z)
+            </div>
+            <div *ngIf="validacion.nombres && validacion.mostrarError" class="text-success">Nombres válidos</div>
+          </div>
+        </div>
+
+        <div class="form-row col-md-12 mb-2">
+          <label for="brand" class="col-md-3">Apellidos</label>
+          <div class="col-md-8">
+            <input type="text" name="apellidos" class="form-control rounded" id="apellidos_id" size="10"
+              [(ngModel)]="estudiante.apellidos" (ngModelChange)="validarEstudiante()" maxlength="30" value required>
+            <div *ngIf="!validacion.apellidos && validacion.mostrarError" class="text-danger">Ingresa un apellido válido
+              (A-Z)</div>
+            <div *ngIf="validacion.apellidos && validacion.mostrarError" class="text-success">Apellidos válidos</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-row col-md-3">
+        <label for="brand" class="col-md-4">Fecha de nacimiento</label>
+        <div class="col-md-8 ">
+          <input type="date" class="rounded" name="Nacimiento" step="1" min="1970/01/01" max="1970/12/31"
+            value="DD-MM-YYYY" id="fechaDeNacimiento_id" [(ngModel)]="estudiante.fecNacimiento">
+          <div *ngIf="!validacion.fecNacimiento && validacion.mostrarError" class="text-danger">Ingresa una fecha válida
+          </div>
+          <div *ngIf="validacion.fecNacimiento && validacion.mostrarError" class="text-success">Fecha válida</div>
+        </div>
+
+
+        <label for="brand" class="col-md-4">Sexo</label>
+        <div class="col-md-8">
+          <select name="sexo" class="form-control rounded p-0" [(ngModel)]="estudiante.sexo" value required>
+            <option>Femenino</option>
+            <option>Masculino</option>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-row col-md-5">
+        <label for="brand" class="col-md-2 pr-2">Código</label>
+        <div class="col-md-2 pl-1 inlineblock">
+          <input type="text" name="numeroHistorico" class="form-control rounded" size="4" id="numeroHistorico_id"
+            [(ngModel)]="estudiante.numHistorico" (ngModelChange)="validarEstudiante() " value required>
+        </div>
+        <p><b>/</b></p>
+        <div class="col-md-2 inlineblock">
+          <input type="text" name="numeroGestion" class="form-control rounded" size="4" id="numeroGestion_id"
+            [(ngModel)]="estudiante.numGestion" (ngModelChange)="validarEstudiante()" value required>
+        </div>
+        <p class="ml-2"><b>/</b></p>
+        <div class="col-md-2 inlineblock">
+          <input type="text" name="gestionRegistro" class="form-control rounded" size="15" id="gestionRegistro_id"
+            [(ngModel)]="estudiante.gestionRegistro" (ngModelChange)="cargarNumeroGestion()"
+            (ngModelChange)="validarEstudiante()" value required>
+        </div>
+
+        <div class="form-row col-md-12 mt-3">
+          <label for="brand" class="col-md-2 ml-0">Dirección</label>
+          <div class="col-md-8">
+            <input type="text" name="direccion" class="form-control rounded" id="DireccionEstudiantes_id"
+              [(ngModel)]="estudiante.direccion" (ngModelChange)="validarEstudiante()" maxlength="70" value required>
+            <div *ngIf="!validacion.direccion && validacion.mostrarError" class="text-danger">Ingresa una dirección
+              válida</div>
+            <div *ngIf="validacion.direccion && validacion.mostrarError" class="text-success">Dirección válida</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-row color-back  mb-2 pb-2 pt-2">
+
+      <div *ngFor='let nose of estudiante.diagnosticos; let i=index;' class="last-row pl-3">
+
+        <div class="col col1 inlineblock">
+          <label class="text-left mb-2">Fecha del registro</label>
+          <input type="date" class="input-fecha rounded" id="estado-fecha-{{i}}" name="estado-fecha-{{i}}" step="1"
+            min="1970/01/01" max="2083/12/31" value="2019/01/01" [(ngModel)]="estudiante.estados[i].fecha"
+            (ngModelChange)="validarEstudiante()">
+          <div *ngIf="!validacion.fechaRegistro && validacion.mostrarError" class="text-danger float-right">Fecha inválida </div>
+          <div *ngIf="validacion.fechaRegistro && validacion.mostrarError" class="text-success float-right">Fecha válida </div>
+
+        </div>
+
+        <div class="col col2 inlineblock">
+          <label class="text-left mb-2">Diagnóstico</label>
+          <select class="form-control rounded" id="diagnostico-id-{{i}}" name="diagnostico-id-{{i}}"
+            [(ngModel)]="estudiante.diagnosticos[i].diagnostico" (ngModelChange)="validarEstudiante()">
+            <option *ngIf='diagnosticos.length != 0' selected disabled value=''> Seleccionar diagnóstico</option>
+            <option *ngIf='diagnosticos.length == 0' selected disabled value=''>Cree primero un diagnostico</option>
+            <option *ngFor='let d of diagnosticos' [value]="d.diagnostico">{{d.diagnostico}}</option>
+          </select>
+          <div *ngIf="!validacion.diagnostico && validacion.mostrarError" class="text-danger float-right">Ingresa un diagnóstico
+          </div>
+        </div>
+
+        <div class="col col3 inlineblock">
+          <label class="text-left mb-2">Estado</label>
+          <select class="form-control rounded" id="estado-id-{{i}}" name="estado-id-{{i}}"
+            [(ngModel)]="estudiante.estados[i].estado" (ngModelChange)="validarEstudiante()">
+            <option *ngIf='estados.length != 0' selected disabled value=''>Seleccionar estado</option>
+            <option *ngIf='estados.length == 0' selected disabled value=''>Cree primero un estado</option>
+            <option *ngFor='let e of estados' [value]="e.estado">{{e.estado}}</option>
+          </select>
+          <div *ngIf="!validacion.estado && validacion.mostrarError" class="text-danger float-right">Ingresa un estado 
+          </div>
+        </div>
+
+        <div class="col col5 inlineblock">
+          <button *ngIf='estudiante.sesiones[i].id == "" ' type="button" class="btn-green-avanza mb-2 w-100"
+            (click)='crearSesion("",this.estudiante.id,i)'>Agregar sesión</button>
+          <button *ngIf='estudiante.sesiones[i].id != "" ' type="button" class="btn-green-avanza mb-2"
+            (click)='verSesion(estudiante.sesiones[i].id)'>Ver sesión</button>
+        </div>
+
+        <div class="col col6 inlineblock">
+          <button type="button" class="btn btn-eliminar-registro mb-2"
+            (click)="abrirModalEliminarRegistro(i)">X</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-outline-green" (click)="agregarRegistro()">+</button>
+    </div>
+
+    <button *ngIf="seEstaRegistrando" type="button" class="btn-green-avanza m-2 float-right"
+      (click)="guardarEstudiante('soloAgregar')">Confirmar</button>
+    <button *ngIf="!seEstaRegistrando" type="button" class="btn-green-avanza m-2 float-right"
+      (click)="guardarEstudiante('esEditar')">Confirmar cambios</button>
+    <button type="button" class="btn-green-avanza m-2 float-right" (click)='dirigirApoderado("")'>Agregar
+      apoderado</button>
+    <button *ngIf="seEstaRegistrando" type="button" class="btn btn-light btn-outline-danger  m-2 float-right"
+      routerLink="/lista-estudiantes">Cancelar</button>
+    <button *ngIf="!seEstaRegistrando" type="button" class="btn btn-light btn-outline-danger  m-2 float-right"
+      (click)="irDetalleEstudiante()">Cancelar</button>
+
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="container pt-5 pb-5 mb-5">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            
+            <p><strong>Estudiantes: </strong>{{dicEstudiantes[sesion.estudiante.id]?.nombres}} {{dicEstudiantes[sesion.estudiante.id]?.apellidos}}</p>
+            <p><strong>Profesora: </strong>{{dicProfesoras[sesion.profesora.nombres]?.nombres}} {{dicProfesoras[sesion.profesora.nombres]?.apellidos}}</p>
+            <p><strong>Tratamiento: </strong> {{dicTratamientos[sesion.tratamiento.id]?.tratamiento}}</p>
+            
+        
+
+        </div>
+
+        <div class="col-md-6">
+            <p><strong>Tipo de pago: </strong>{{sesion.tipoDePago}}</p>
+            <p><strong>Costo por sesión: </strong>{{sesion.costoPorSesion}}</p> 
+            <p><strong>Deuda: </strong>{{deuda}} </p>
+
+        </div>       
+        
+    </div>
+
+    <hr>
+    <h3 class="m-3"><b>Lista de asistencia:</b></h3>
+
+    <div class="row mb-3">
+    
+        <div *ngFor='let asistencia of sesion.asistencias'>
+            <div class="col mt-4 ml-2 mr-2"> 
+                
+                    <p><strong>Fecha: </strong>{{mostrarBienLaFecha(asistencia.fecha)}}</p>
+                    <p><strong>Hora: </strong>{{asistencia.hora}}</p>
+                 
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="float-right">
+        <button type="button" class="btn btn-outline-secondary m-1" (click)="clickAtras()">Atrás</button>
+        <button type="button" class="btn-green-avanza" (click)="editarSesion(sesion.id)">Editar</button>
+    </div>
+</div>

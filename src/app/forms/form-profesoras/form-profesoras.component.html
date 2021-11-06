@@ -1,0 +1,57 @@
+<div class="container mb-3 pb-3 mt-4">
+    <h2 class="color title_rounded " *ngIf="esNuevo">  Registrar Profesora</h2>
+    <h2 class="color title_rounded" *ngIf="!esNuevo">  Editar Profesora</h2>
+    <form class="color-back pl-3 pr-3">
+        <div class="form-row  ml-0 mr-0">
+                <div class="form-group col-md-6">
+                    <label for="Nombres" class="text-left label_form">Nombres</label>
+                    <input type="text" name="Nombres" class="rounded form-control " id="Nombres_id"
+                      [(ngModel)]="profesora.nombres" (ngModelChange)="validarProfesora()" maxlength="35" value required>
+                      <div *ngIf="!validacion.nombres && validacion.mostrarError" class="text-danger">Ingresa un nombre válido (A-Z)</div>
+                      <div *ngIf="validacion.nombres && validacion.mostrarError" class="text-success">Nombre válido</div>
+                </div> 
+                <div class="form-group col-md-6">
+                    <label for="Apellidos" class="text-left label_form">Apellidos</label>
+                    <input type="text" name="Apellidos" class="rounded form-control" id="Apellidos_id" size="10"
+                      [(ngModel)]="profesora.apellidos" (ngModelChange)="validarProfesora()" maxlength="30" value required>
+                      <div *ngIf="!validacion.apellidos && validacion.mostrarError" class="text-danger">Ingresa un apellido válido (A-Z)</div>
+                      <div *ngIf="validacion.apellidos && validacion.mostrarError" class="text-success">Apellido válido</div>
+                </div>
+        </div>
+
+        <div class="form-row ">
+                <div class="form-group col-md-4">
+                    <label for="Telefono" class="text-left label_form">Teléfono</label>
+                    <input type="number" name="Telefono" class="rounded form-control" id="Telefono_id"
+                    [(ngModel)]="profesora.telefono" (ngModelChange)="validarProfesora()">
+                    <div *ngIf="!validacion.telefono && validacion.mostrarError" class="text-danger">Teléfono inválido</div>
+                    <div *ngIf="validacion.telefono && validacion.mostrarError" class="text-success">Teléfono o celular válido</div>
+    
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="Celular" class="text-left label_form">Celular</label>
+                    <input type="number" name="Celular" class="rounded form-control" id="Celular_id"
+                    [(ngModel)]="profesora.celular" (ngModelChange)="validarProfesora()" value required>
+                    <div *ngIf="!validacion.celular && validacion.mostrarError" class="text-danger">Celular inválido</div>
+                    <div *ngIf="validacion.celular && validacion.mostrarError" class="text-success">Teléfono o celular válido</div>
+    
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="Correo Electrónico" class="text-left label_form">Correo Electrónico</label>
+                    <input type="text" name="correoElectrónico" class="form-control redondeado"    id="correoElectronico_id"
+                    [(ngModel)]="profesora.correoElectronico" (ngModelChange)="validarProfesora()" placeholder="Ejemplo: sofia@hotmail.com">
+                    <div *ngIf="!validacion.correoElectronico && validacion.mostrarError" class="text-danger">Ingresa un correoElectronico válido</div>
+                    <div *ngIf="validacion.correoElectronico && validacion.mostrarError" class="text-success">Correo Electrónico válido</div>
+                </div>
+        </div>
+
+        <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right" (click)="guardarProfesora()">Agregar</button>
+        <button *ngIf="!esNuevo" type="button" class="btn-green-avanza m-2 float-right" (click)="guardarProfesora()">Confirmar Cambios</button>
+        <button *ngIf="esNuevo" type="button" class="btn btn-light btn btn-outline-danger m-2 float-right" routerLink="/lista-profesoras">Cancelar</button>
+        <button *ngIf="!esNuevo" type="button" class="btn btn-light btn btn-outline-danger m-2 float-right"(click)="clickAtras()">Cancelar</button>
+
+    </form>
+    
+</div>

@@ -1,0 +1,19 @@
+<div class = "container d-flex justify-content-center pt-2">
+
+    <div class="card pb-2 pl-2">
+        <div class="col-md-12">
+            <p><strong>Nombre:</strong> {{profesora.nombres}} {{profesora.apellidos}}</p>
+            <p><strong>Celular: </strong> {{profesora.celular}} </p>
+            <p><strong>Teléfono: </strong> {{profesora.telefono}} </p>
+            <p><strong>Correo electrónico: </strong> {{profesora.correoElectronico}}</p>
+        </div>
+
+        <div class="col-md-12">
+            <button type="button" class="btn-green-avanza m-1 float-right" (click)="editarProfesora(profesora.id)">Editar</button>
+            <button type="button" class="btn btn-outline-secondary m-1 float-right" routerLink="/lista-profesoras">Atrás</button>
+        </div>
+
+    </div>
+      
+
+</div>

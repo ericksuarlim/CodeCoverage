@@ -1,0 +1,43 @@
+<div class="container mb-3 pb-3 mt-4">
+    <h2 class="color title_rounded" *ngIf="esNuevo"> Registrar Diagnóstico</h2>
+    <h2 class="color title_rounded" *ngIf="!esNuevo"> Editar Diagnóstico</h2>
+    <form class="color-back pl-3 pr-3">
+        <div class="form-row mb-0 pb-0">
+            <div class="form-group col-sm-12 col-lg-3">
+                <label for="brand" class="text-left label_form">Abreviatura del color</label>
+                <input type="text" name="abreviacionColor" class="form-control rounded" id="abreviacionColor_id"
+                    [(ngModel)]="diagnostico.codigoColor" (ngModelChange)="validarDiagnostico()" maxlength="5" value
+                    required>
+                <div *ngIf=""></div>
+                <div *ngIf="!validacion.codigoColor && validacion.mostrarError" class="text-danger">Ingrese una
+                    abreviación </div>
+                <div *ngIf="validacion.codigoColor && validacion.mostrarError" class="text-success">La abreviación es
+                    válida</div>
+            </div>
+            <div class="form-group col-sm-12 col-lg-5">
+                <label for="brand" class="text-left label_form">Nombre del diagnóstico</label>
+                <input type="text" name="Diagnostico" class="form-control rounded" id="Diagnostico_id"
+                    [(ngModel)]="diagnostico.diagnostico" (ngModelChange)="validarDiagnostico()" maxlength="50" value
+                    required>
+                <div *ngIf="!validacion.diagnostico && validacion.mostrarError" class="text-danger">Ingrese un nombre de
+                    diagnóstico válido</div>
+                <div *ngIf="validacion.diagnostico && validacion.mostrarError" class="text-success">Nombre del
+                    diagnóstico es válido</div>
+            </div>
+            <div class="form-group col-sm-12 col-lg-4">
+                <label for="brand" class="text-left label_form">Color asignado al diagnóstico</label>
+                <input type="color" name="color" class="form-control rounded" id="color_id"
+                    [(ngModel)]="diagnostico.color">
+            </div>
+        </div>
+
+        <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarDiagnostico()">Agregar</button>
+        <button *ngIf="!esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarDiagnostico()">Confirmar Cambios</button>
+        <button type="button" class="btn btn-light btn-outline-danger m-2 float-right"
+            routerLink="/lista-diagnosticos">Cancelar</button>
+    </form>
+
+
+</div>

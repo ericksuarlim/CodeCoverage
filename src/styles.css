@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+/*Varialbes globales*/
+:root{
+  --bg_color: #007c61;
+  --color-text-title:#f8f8fd;
+}
+.color-back{
+  background-color: #eeeeee;
+}
+
+html{
+    min-height: 100%;
+    position: relative;
+}
+ body{
+    margin: 0;
+    margin-bottom: 40px;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+} 
+  /*----component-style------*/
+table {
+    border: rgb(44, 86, 92) 2px solid;
+    background:#f8f8fd;
+}
+thead{
+    background: var(--bg_color);
+}
+table.table td {   
+  padding-top: .2rem;  
+  padding-bottom: .2rem;
+}
+th{
+    text-align: center;
+    color: #f8f8fd;
+}
+td{
+  height: 35px;
+}
+.text-center{
+    text-align: center;
+ }
+.btn-register{
+  margin-bottom: 10px;
+}
+.btn-green-avanza {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    background: none;
+    color: var(--bg_color);
+    user-select: none;
+    border: 1px solid;
+    padding: .375rem .75rem;
+    
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-green-avanza:hover{
+    background: var(--bg_color);
+    color: var(--color-text-title);
+    text-decoration: none;
+}
+.border {
+    border: 1px solid var(--bg_color)!important;
+}
+.design-title-col{
+    text-align: center;
+    margin: 3;
+}
+  /*----Form-style------*/
+h3{
+  font-size: 1.7em;
+  color: #000000;
+  margin-bottom: 5px;
+  padding-bottom: 6px;
+  text-align: center;
+  }
+  .label_form{
+    font-size: 21px;
+  }
+  .title_rounded {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-color: #007c61;
+  }
+  .color{
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+    background-color: #007c61;
+    margin-bottom: 5px;
+    padding-bottom: 6px;
+    text-align: center;
+  }
+  .rounded {
+    border-radius: 7px;
+    border: 1.5px solid #007c61;
+    }
+  
+  .form-row{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .form-estudiantes-text-left{
+    font-size: 1.2em;
+    color: #000000;
+    margin-bottom: 2px;
+    text-align: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #383a39;
+  }
+
+  
+  .text-right{
+    text-align: right;
+  }
+  .text-left{
+    text-align: left;
+  }

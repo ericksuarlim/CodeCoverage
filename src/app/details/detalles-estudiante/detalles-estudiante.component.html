@@ -1,0 +1,87 @@
+<div class="container pt-5 pb-5 ">
+
+    <div class="row">
+        <div class="col-md-4 ">
+            <p><strong>Nombre:</strong> {{estudiante.nombres}} {{estudiante.apellidos}}</p>
+            <p><strong>Dirección: </strong> {{estudiante.direccion}} </p>
+            <p><strong>Sexo: </strong> {{estudiante.sexo}} </p>
+            <p><strong>Fecha de nacimiento: </strong> {{mostrarBienLaFecha(estudiante.fecNacimiento)}} </p>
+        </div>
+
+        <div class="col-md-6">
+            <div class="float-right pr-4">
+                <p><strong>Código:
+                    </strong>{{estudiante.numHistorico}}/{{estudiante.numGestion}}/{{estudiante.gestionRegistro}}</p>
+                <label><strong>Apoderados: </strong></label>
+                <div *ngFor='let apoderado of estudiante.apoderados'>
+                    <li>{{dicApoderados[apoderado.id]?.nombres}} {{dicApoderados[apoderado.id]?.apellidos}}</li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="estudiante.diagnosticos.length!=0">
+        <hr>
+    </div>
+
+    <div *ngIf="estudiante.diagnosticos.length!=0" class="row pt-2 mr-1 ml-1 box-registro">
+        <div class="col3 inlineblock ">
+            <label class="col"><strong>Diagnóstico</strong></label>
+        </div>
+
+        <div class="col1 inlineblock ">
+            <label class="col"><strong>Fecha</strong></label>
+        </div>
+        <div class="col2 inlineblock ">
+            <label class="col"><strong>Estado</strong></label>
+        </div>
+        
+
+        <div class="col4 inlineblock ">
+            <label class="col"><strong>Tratamiento</strong></label>
+        </div>
+        <div class="col5 inlineblock ">
+            <label class="col"><strong>Profesora</strong></label>
+        </div>
+        
+        
+
+    </div>
+    <div class="row color-back  mb-2 pb-2 pt-2 mr-1 ml-1 box-registro" *ngFor="let diagnostico of estudiante.diagnosticos; let i=index;">
+
+        <div class="col3 medio inlineblock">
+            <h1 class="dot ml-3" [ngStyle]="{'background-color':dicDiagnosticos[estudiante.diagnosticos[i].diagnostico]?.color}"></h1>
+            <label class="col pl-3">{{estudiante.diagnosticos[i].diagnostico}}</label>
+        </div>
+
+        <div class="col1 medio inlineblock">
+            <label class="col">{{estudiante.estados[i]?.fecha}}</label>
+        </div>
+        
+        <div class="col2 medio inlineblock">
+            <label class="col">{{estudiante.estados[i].estado}}</label>
+        </div>
+
+        
+
+        <div class="col4 medio inlineblock">
+            <label class="col">{{dicTratamientos[dicSesiones[estudiante.sesiones[i].id]?.tratamiento.id]?.tratamiento}}</label>
+        </div>
+
+        <div class="col5 medio inlineblock">
+            <label class="col">{{dicProfesoras[dicSesiones[estudiante.sesiones[i].id]?.profesora.nombres]?.nombres}} {{dicProfesoras[dicSesiones[estudiante.sesiones[i].id]?.profesora.nombres]?.apellidos}}</label>
+        </div>
+
+        <div class="col6 ">
+            <button *ngIf='estudiante.sesiones[i].id != "" ' type="button" class="btn-green-avanza m-1 float-right" (click)="abrirEdicionSesion(dicSesiones[estudiante.sesiones[i].id])">Ver</button>
+        </div>
+
+    </div>
+
+    <div class="float-right">
+        <button type="button" class="btn btn-outline-secondary m-1" routerLink="/lista-estudiantes">Atrás</button>
+        <button type="button" class="btn-green-avanza" (click)="editarEstudiante(estudiante.id)">Editar</button>
+        <button type="button" class="btn btn-outline-danger m-1"
+            (click)="abrirModalEliminar(estudiante)">Eliminar</button>
+    </div>
+</div>

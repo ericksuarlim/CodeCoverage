@@ -1,0 +1,43 @@
+<div class="container mb-3 pb-3 mt-4">
+    <h2 class="color title_rounded" *ngIf="esNuevo"> Registrar Estado</h2>
+    <h2 class="color title_rounded" *ngIf="!esNuevo"> Editar Estado</h2>
+    <form class="color-back pl-3 pr-3">
+
+        <div class="form-row pb-2 pt-2 ml-0 mr-0">
+            <div class="form-group col-md-6 pb-1 mb-2">
+                <label for="numEstado" class="text-left label_form">Número de estado</label>
+                <input type="text" name="numEstado" class="form-control rounded" id="NumEstado_id"
+                    [(ngModel)]="estado.numEstado" (ngModelChange)="validarEstado()" placeholder="Ejemplo: 1,2,3"
+                    maxlength="15" value required>
+                <div *ngIf="!validacion.numEstado && validacion.mostrarError" class="text-danger">Número de Estado
+                    inválido</div>
+                <div *ngIf="validacion.numEstado && validacion.mostrarError" class="text-success">Número de Estado
+                    válido</div>
+                <div class="valid-feedback">
+                    Ingrese un numero perteneciente a un estado.
+                </div>
+            </div>
+
+            <div class="form-group col-md-6 pb-1 mb-2">
+                <label for="Estado" class="text-left label_form">Estado del estudiante</label>
+                <input type="text" name="Estado" class="form-control rounded" id="Estados_id"
+                    [(ngModel)]="estado.estado" (ngModelChange)="validarEstado()" placeholder="Ejemplo: Solo evalución"
+                    maxlength="35" value required>
+                <div *ngIf="!validacion.estado && validacion.mostrarError" class="text-danger">Ingresa un Estado válido
+                    (A-Z)</div>
+                <div *ngIf="validacion.estado && validacion.mostrarError" class="text-success">Estado válido</div>
+                <div class="valid-feedback">
+                    Ingrese el estado del estudiante.
+                </div>
+            </div>
+        </div>
+
+        <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarEstado()">Agregar</button>
+        <button *ngIf="!esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarEstado()">Confirmar Cambios</button>
+        <button type="button" class="btn btn-light btn-outline-danger m-2 float-right"
+            routerLink="/lista-estados">Cancelar</button>
+    </form>
+
+</div>

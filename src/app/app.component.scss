@@ -1,0 +1,49 @@
+nav{  
+    background-color: #eeeeee;  
+}
+nav ul li {
+    float: right;
+  }
+t
+nav ul{
+    justify-content: right;
+}
+.OpcionMenu{
+    text-align: center;
+    font-size: 15;
+    text-transform: uppercase;
+}
+.OpcionMenu:hover{
+    background: #007c61;
+    transition: .5s;
+    color:  #f8f8fd;
+    border-radius: 25px;
+}
+.OpcionMenu.active{
+    background: #007c61;
+    border-radius: 25px;
+    color:  #f8f8fd;
+}
+
+a{
+    color: #007c61;
+    text-align: center;
+}
+
+.Aplicacion{
+    position: relative;
+    margin-bottom: 15%;
+}
+.datos_centro {
+    text-align: center;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 50px ;
+    color: #007c61;
+}
+.home{
+    border: none;
+    background:none;
+    outline: none;
+}
+

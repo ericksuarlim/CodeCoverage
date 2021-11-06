@@ -1,0 +1,103 @@
+nav{  
+  background-color: #eeeeee;  
+}
+nav ul li {
+  float: right;
+}
+
+nav ul{
+  justify-content: right;
+}
+.OpcionMenu{
+  text-align: center;
+  font-size: 15;
+  text-transform: uppercase;
+}
+.OpcionMenu:hover{
+  background: #007c61;
+  transition: .5s;
+  color:  #f8f8fd;
+  border-radius: 25px;
+}
+.OpcionMenu.active{
+  background: #007c61;
+  border-radius: 25px;
+  color:  #f8f8fd;
+}
+a{
+  color: #007c61;
+  text-align: center;
+}
+.Aplicacion{
+  position: relative;
+  margin-bottom: 15%;
+}
+.datos_centro {
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 50px ;
+  color: #007c61;
+}
+
+.div-registro-grafico-green-right {
+  width: 300px;
+  height: 100px;
+  color:#EEEEEE;  
+  font-weight: bold; 
+  font-size:x-large; 
+  background: #007C61;
+  padding-top: 30px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.div-registro-grafico-grey-right {
+  width: 300px;
+  height: 300px;
+  padding-top: 65px;
+  background: #EEEEEE;
+  border-radius: 40px 40px 0px 0px;
+}
+
+.div-registro-grafico-green-left {
+  width: 300px;
+  height: 100px;
+  color:#EEEEEE;  
+  font-weight: bold; 
+  font-size:x-large; 
+  background: #007C61;
+  padding-top: 30px;
+  border-radius: 0px 0px 40px 40px;
+}
+.div-registro-grafico-grey-left {
+  width: 300px;
+  height: 300px;
+  padding-top: 50px;
+  background: #EEEEEE;
+
+  border-radius: 40px 40px 0px 0px;
+}
+
+.btn-registro{
+  border: none;
+  background:none;
+  outline: none;
+  width: 300px;
+  height: 400px;
+  padding: 0%;
+  border-radius: 40px;
+  margin-top: 50px;
+}
+
+.div-buttons{
+  box-align: center;
+}
+.btn-left{
+  
+  clear: right;
+  margin-right: 150px;
+}
+
+.btn-right{
+  margin-left: 150px;
+}

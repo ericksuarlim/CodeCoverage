@@ -1,0 +1,80 @@
+<div class="co1">
+  <nav *ngIf="ocultarNavbar()" class="navbar navbar" role="navigation">
+    <div class="container-fluid">
+      <div>
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            <button class="home" title="Menú principal"> <img [src]="LogoAvanza" width="90" height="50"
+                routerLink="/home" aria-controls="logo" aria-selected="true">
+            </button>
+          </a>
+        </div>
+      </div>
+      <ul *ngIf="mostrarNavbar()" class="nav nav-pills navbar-justified" role="tablist">
+        <li class="nav-item ">
+          <a class="nav-link OpcionMenu " data-toggle="pill" routerLink="lista-estudiantes"
+            [class.active]="estaActivo('lista-estudiantes' , 'form-estudiantes')" role="tab"
+            aria-controls="pills-Estudiantes" aria-selected="false">Estudiantes<span
+              class="sr-only">(current)</span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="lista-estados"
+            [class.active]="estaActivo('lista-estados', 'form-estados')" role="tab" aria-controls="pills-Estados"
+            aria-selected="false">Estados<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="lista-apoderados"
+            [class.active]="estaActivo('lista-apoderados', 'form-apoderados')" role="tab"
+            aria-controls="pills-Apoderados" aria-selected="false">Apoderados<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="lista-profesoras"
+            [class.active]="estaActivo('lista-profesoras', 'form-profesoras')" role="tab"
+            aria-controls="pills-Profesoras" aria-selected="false">Profesoras<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="lista-diagnosticos"
+            [class.active]="estaActivo('lista-diagnosticos', 'form-diagnostico')" role="tab"
+            aria-controls="pills-Diagnosticos" aria-selected="false">Diagnósticos<span
+              class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="lista-tratamientos"
+            [class.active]="estaActivo('lista-tratamientos')" role="tab" aria-controls="pills-Tratamientos"
+            aria-selected="false">Tratamientos<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul *ngIf="mostrarNavbarGraficos()" class="nav nav-pills navbar-justified" role="tablist">
+
+        <li class="nav-item ">
+          <a class="nav-link OpcionMenu " data-toggle="pill" routerLink="graphic-estudiantes"
+            [class.active]="estaActivo('graphic-estudiantes')" role="tab" aria-controls="pills-Estudiantes"
+            aria-selected="false">Estudiantes<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="graphic-sesiones"
+            [class.active]="estaActivo('graphic-sesiones')" role="tab" aria-controls="pills-Sesiones"
+            aria-selected="false">Sesiones<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul *ngIf="enPaginaPrincipal()" class="nav nav-pills navbar-justified" role="tablist">
+
+        <li class="nav-item">
+          <a class="nav-link OpcionMenu" data-toggle="pill" routerLink="crear-cuenta" role="tab"
+            aria-controls="pills-CrearCuenta" aria-selected="false">Crear Cuenta<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link OpcionMenu " data-toggle="pill" routerLink="" (click)="logout()" role="tab"
+            aria-controls="pills-CerrarSesion" aria-selected="false">Cerrar Sesión<span
+              class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

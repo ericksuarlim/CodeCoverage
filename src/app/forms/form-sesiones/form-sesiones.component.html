@@ -1,0 +1,137 @@
+<div class="container mb-3 pb-3 mt-4">
+  <h2 class="color title_rounded" *ngIf="esNuevo"> Registrar Sesión</h2>
+  <h2 class="color title_rounded" *ngIf="!esNuevo"> Editar Sesión</h2>
+  <form>
+    <div class="color-back">
+      <div class="row">
+        <div class="col divs ">
+          <label  >Tipo de pago</label>
+          <select class="rounded spaceLabels inputSize float-right" [(ngModel)]="sesion.tipoDePago" name="tipoDePago" id="tipoDePago_id"
+          (ngModelChange)="validarSesion()"  value required>
+            <option disabled value=""> Seleccionar tipo de pago</option>
+            <option value="Unica sesion">Única sesión</option>
+            <option value="Mensual al contado">Mensual al contado</option>
+            <option value="Mensual a cuotas">Mensual a cuotas</option>
+            
+        </select>
+          <div *ngIf="!validacion.tipoDePago && validacion.mostrarError" class="text-danger"> Seleccione una opción</div>
+          <div *ngIf="validacion.tipoDePago && validacion.mostrarError" class="text-success"></div>
+        </div>
+        <div class=" col divs">
+          <label >Costo por sesión</label>
+          <input type="number" name="costoSesion" class="rounded spaceLabels inputSize float-right" id="costoSesion_id"
+            [(ngModel)]="sesion.costoPorSesion" (click)="actalizarMontos()" value required>
+            <div *ngIf="!validacion.costoPorSesion && validacion.mostrarError" class="text-danger">Número inválido</div>
+            <div *ngIf="validacion.costoPorSesion && validacion.mostrarError" class="text-success">Número válido</div>
+        </div>
+        
+      </div>
+      
+      <div *ngIf="sesion.tipoDePago!='Unica sesion' && sesion.tipoDePago!=''" class="row">
+        <div class="col divs">
+          <label >Cantidad de asistencias</label>
+          <input type="number" name="cantidadDeSesiones"  class="rounded spaceLabels inputSize  inputSizeLittle float-right" id="cantidadDeSesiones_id"
+            [(ngModel)]="cantidadDeAsistencias" min="1" value required>
+            <div *ngIf="!validacion.cantidadDeAsistencias && validacion.mostrarError" class="text-danger"> Seleccione un número valido</div>
+            <div *ngIf="validacion.cantidadDeAsistencias && validacion.mostrarError" class="text-success">Numero válido</div>
+        </div>
+        <div  class="col divs">
+          <div *ngIf="sesion.tipoDePago!='Mensual al contado'">         
+            <label >Número de cuotas</label>
+            <input  min="0" type="number" name="cantidadDeCuotas" class="rounded spaceLabels inputSize inputSizeLittle float-right" id="cantidadDeCuotas_id"
+              [(ngModel)]="cantidadDeCuotas" value="">
+              <div *ngIf="!validacion.cantidadDeCuotas && validacion.mostrarError" class="text-danger">Seleccione un número valido</div>
+              <div *ngIf="validacion.cantidadDeCuotas && validacion.mostrarError" class="text-success">Número válido</div>
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col ">
+          <button class=" btn-green-avanza btnUpdateChanges"  (click)="actualizarCuotasAsistenciasSegunTipo(true,true)">Actualizar cambios</button>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="color-back sizefortreeColumns marginColumn1">
+      <label class="upperLabel">Estudiante</label>
+      <select class="rounded col-md-10 spaceLabels inputSize" name="estudiante-id" id="estudiante-id" 
+        [(ngModel)]="sesion.estudiante.id" (ngModelChange)="validarSesion()" disabled>
+        <option selected disabled value=""> Seleccionar Estudiante</option>
+        <option *ngFor='let e of estudiantes' [value]="e.id">{{e.nombres}} {{e.apellidos}}</option>
+      </select>
+        <div *ngIf="!validacion.estudiante && validacion.mostrarError" class="text-danger"> Seleccione una opción</div>
+        <div *ngIf="validacion.estudiante && validacion.mostrarError" class="text-success">Opción válida</div>
+    </div>
+
+    <div class="color-back sizefortreeColumns marginColumn2 ">
+      <label class="upperLabel">Profesora</label>
+      <select class="rounded col-md-10 spaceLabels inputSize" name="profesora-id" id="profesora-id" 
+        [(ngModel)]="sesion.profesora.nombres" (ngModelChange)="validarSesion()" value required>
+        <option selected disabled value=""> Seleccionar Profesora</option>
+        <option *ngFor='let e of profesoras' [value]="e.nombres">{{e.nombres}} {{e.apellidos}}</option>
+      </select>
+        <div *ngIf="!validacion.profesora && validacion.mostrarError" class="text-danger"> Seleccione una opción</div>
+        <div *ngIf="validacion.profesora && validacion.mostrarError" class="text-success">Opción válida</div>
+      </div>
+
+    
+
+
+    <div class="color-back sizefortreeColumns marginColumn3">
+      <label class="upperLabel">Tratamiento</label>
+      <select class=" rounded col-md-10 spaceLabels inputSize" name="tratamiento-id"  id="tratamiento-id" 
+      [(ngModel)]="sesion.tratamiento.id" (ngModelChange)="validarSesion()" value required>
+        <option selected disabled value=""> Seleccionar tratamiento</option>
+        <option *ngFor='let p of tratamientos' [value]="p.id">{{p.tratamiento}}</option>
+      </select>
+        <div *ngIf="!validacion.tratamiento && validacion.mostrarError" class="text-danger"> Seleccione una opción</div>
+        <div *ngIf="validacion.tratamiento && validacion.mostrarError" class="text-success">Opción válida</div>
+    </div>
+    <div class="row marginRow">
+    <div class="col color-back moreThanHalfColumn marginColumn1 ">
+      <label class="upperLabel">Asistencias</label>
+
+      <div *ngFor='let asistencia of sesion.asistencias; let i=index;'>
+
+        <div class=" col-md-6 inlineblock ">
+          <label class="inlineblock">Fecha</label>
+          <input type="date" class="input-fecha rounded spaceLabels inputSize inputSizeDate" id="sesion-fecha-{{i}}" name="sesion-fecha-{{i}}" step="1"
+            min="1970/01/01" max="2083/12/31" value="2019/01/01" [(ngModel)]="sesion.asistencias[i].fecha"
+            (ngModelChange)="validarSesion()">
+            <div *ngIf="!validacion.fecha && validacion.mostrarError" class="text-danger"> Seleccione todas las fechas</div>
+            <div *ngIf="validacion.fecha && validacion.mostrarError" class="text-success">Opción válida</div>
+        </div>
+         
+
+        <div class="col-md-6 inlineblock ">
+          <label class="inlineblock">Hora</label>
+          <input type="time" class="input-fecha rounded spaceLabels inputSize inputSizeHour" id="sesion-hora-{{i}}" name="sesion-hora-{{i}}"
+            [(ngModel)]="sesion.asistencias[i].hora" (ngModelChange)="validarSesion()">
+            <div *ngIf="!validacion.hora && validacion.mostrarError" class="text-danger"> Seleccione todas las horas</div>
+            <div *ngIf="validacion.hora && validacion.mostrarError" class="text-success">Opción válida</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4.8 color-back sizefortreeColumns marginColumn3 ">
+      <label class="upperLabel">Cuotas</label>
+      <div *ngFor='let cuota of sesion.cuotas; let i=index;'>
+        <label class="spaceLabels"><b class="spaceLabels">Monto:</b>{{cuota}} Bs.</label>
+      </div>
+    </div>
+  </div>
+
+
+    <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+      (click)="guardarSesion()">Agregar</button>
+    <button *ngIf="esNuevo" type="button" class="btn btn-light btn-outline-danger  m-2 float-right" (click)="IrEditarEstudiante()">Cancelar</button>
+    <button *ngIf="!esNuevo" type="button" class="btn-green-avanza m-2 float-right" (click)="guardarSesion()">Confirmar Cambios</button>
+
+    <button *ngIf="!esNuevo" type="button" class="btn btn-light btn-outline-danger  m-2 float-right"
+      (click)="clickAtras()">Cancelar</button>
+
+  </form>
+</div>

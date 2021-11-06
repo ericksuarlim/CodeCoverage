@@ -1,0 +1,42 @@
+<div class="container mb-3 pb-3 mt-4">
+    <div class="form-row color-back mb-0 pb-0">
+        <div class="col-md-8 pb-1 mb-2 pl-3 pr-3">
+            <div id="divChart">
+                <canvas id="myChart" width="50px" height="50px"></canvas>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form class="color-back pl-3 pr-3" #userForm="ngForm">
+                <h1 class="title_rounded text-center">Opciones</h1>
+                <hr>
+                <div class="inlineblock">
+                    <label class="text-left mb-2">Filtro</label>
+                    <select class="form-control rounded " name="filtroCategoria" (change)="visibilidad($event.target.value)"ngModel>
+                        <option selected  value="">Seleccione una categoría </option>
+                        <option value="1">Sesión</option>
+                        <option value="2">Profesora</option>
+                    </select>
+                </div>
+                <div class="inlineblock">
+                    <label class="text-left mb-2">Tipo de gráfico</label>
+                    <select name="tipoChart" id="tiposGraficos" class="form-control rounded" name="tipoDeGrafico" ngModel>
+                        <option value="">Seleccione un tipo</option>
+                        <option value='pie'>Torta</option>
+                        <option value ='bar'>Barras</option>
+                    </select>
+                </div>
+                <div class="inlineblock" style="visibility: collapse;" id="lista-anios">
+                    <label class="text-left mb-2">Seleccione un año</label>
+                    <select class="form-control" name="filtroAnio" ngModel>
+                      <option value="" selected disabled>Seleccione un año</option>
+                      <option *ngFor='let anio of listaDeAnios' [value]="anio">{{anio}}</option>
+                    </select>
+                </div>
+                <div class="m-2 float-right">
+                    <button class="btn-green-avanza m-2" (click)="ObtenerOpciones(userForm)">Actualizar</button>
+                    <button class="btn btn-outline-secondary m-2" routerLink="/home">Atrás</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

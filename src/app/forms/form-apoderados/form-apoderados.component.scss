@@ -1,0 +1,30 @@
+
+.btn-eliminar-apoderado{
+  border-radius: 50%;
+  background-color: transparent;
+  color: #D60404;
+  border:1px solid #D60404;
+}
+
+.btn-eliminar-apoderado:hover{
+  background-color: #D60404;
+  color:whitesmoke;
+}
+
+.btn-agregar-apoderado{
+  border-radius: 50%;
+  background-color: transparent;
+  color: #007c61;
+  border:1px solid #007c61;
+  margin-right: 120px;
+  margin-top: 10px;
+}
+
+.btn-agregar-apoderado:hover{
+  background-color: #007c61;
+  color:whitesmoke;
+}
+
+.padding-propio{
+  padding-left: 0px;
+}

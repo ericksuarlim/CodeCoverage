@@ -1,0 +1,45 @@
+<div class="container mb-3 pb-3 mt-4">
+    <h2 class="color title_rounded" *ngIf="esNuevo"> Registrar Tratamiento</h2>
+    <h2 class="color title_rounded" *ngIf="!esNuevo"> Editar Tratamiento</h2>
+    <form class="color-back pl-3 pr-3">
+        <div class="form-row color-back mb-0 pb-0">
+            <div class="form-group col-md-6 pb-1 mb-2">
+                <label for="Tratamiento" class="text-left label_form">Nombre del Tratamiento</label>
+                <input type="text" name="Tratamiento" class="form-control rounded" id="Tratamientos_id"
+                    [(ngModel)]="tratamiento.tratamiento" (ngModelChange)="validarTratamiento()" maxlength="50" value
+                    required>
+                <div *ngIf="!validacion.tratamiento && validacion.mostrarError" class="text-danger">Ingresa un
+                    tratamiento válido
+                    (A-Z)</div>
+                <div *ngIf="validacion.tratamiento && validacion.mostrarError" class="text-success">Tratamiento válido
+                </div>
+                <div class="valid-feedback">
+                    Ingrese el tratamiento.
+                </div>
+            </div>
+
+            <div class="form-group col-md-6 pb-1 mb-2">
+                <label for="descripcionTratamiento" class="text-left label_form">Descripción del tratamiento </label>
+                <input type="text" name="descripcionTratamiento" class="form-control rounded"
+                    id="descripcionTratamiento_id" [(ngModel)]="tratamiento.descripcion"
+                    (ngModelChange)="validarTratamiento()" maxlength="200" value required>
+                <div *ngIf="!validacion.descripcion && validacion.mostrarError" class="text-danger">Ingresa una
+                    descripción de tratamiento válida (A-Z)</div>
+                <div *ngIf="validacion.descripcion && validacion.mostrarError" class="text-success">Descripción de
+                    tratamiento válido</div>
+                <div class="valid-feedback">
+                    Ingrese una descripción perteneciente a un tratamiento.
+                </div>
+            </div>
+        </div>
+
+        <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarTratamiento()">Agregar</button>
+        <button *ngIf="!esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+            (click)="guardarTratamiento()">Confirmar Cambios</button>
+        <button type="button" class="btn btn-light btn-outline-danger m-2 float-right"
+            routerLink="/lista-tratamientos">Cancelar</button>
+
+    </form>
+
+</div>

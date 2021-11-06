@@ -1,0 +1,124 @@
+<div class="container mb-3 pb-3 mt-4">
+  <h2 class="color title_rounded" *ngIf="esNuevo"> Registrar Apoderado</h2>
+  <h2 class="color title_rounded" *ngIf="!esNuevo"> Editar Apoderado</h2>
+  <form class="pl-1 pr-1">
+    <div class="form-row color-back mb-0 pb-0 pr-3 pl-3">
+      <div class="form-group col-md-6 pb-1 mb-2">
+        <label for="ApoderadoNombre" class="text-left label_form">Nombres</label>
+        <input type="text" name="ApoderadoNombre" class="form-control rounded" id="NombreaApoderado_id"
+          [(ngModel)]="apoderado.nombres" (ngModelChange)="validarApoderado()" maxlength="35" value required>
+        <div *ngIf="!validacion.nombres && validacion.mostrarError" class="text-danger">Ingresa un nombre válido (A-Z)
+        </div>
+        <div *ngIf="validacion.nombres && validacion.mostrarError" class="text-success">Nombre válido</div>
+        <div class="valid-feedback">
+          Ingrese el nombre del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-6 pb-1 mb-2">
+        <label for="apellidoAPoderado" class="text-left label_form">Apellidos</label>
+        <input type="text" name="apellidoAPoderado" class="form-control rounded" id="ApellidoApoderado_id"
+          [(ngModel)]="apoderado.apellidos" (ngModelChange)="validarApoderado()" maxlength="45" value required>
+        <div *ngIf="!validacion.apellidos && validacion.mostrarError" class="text-danger">Ingresa un apellido válido
+          (A-Z)</div>
+        <div *ngIf="validacion.apellidos && validacion.mostrarError" class="text-success">Apellido válido</div>
+        <div class="valid-feedback">
+          Ingrese el apellido del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-4 pb-1 mb-2">
+        <label for="celularApoderado" class="text-left label_form">Celular</label>
+        <input type="number" name="celularApoderado" class="form-control rounded" id="celularApoderado_id"
+          [(ngModel)]="apoderado.celular" (ngModelChange)="validarApoderado()" maxlength="11" value required>
+        <div *ngIf="!validacion.celular && validacion.mostrarError" class="text-danger">El celular es inválido</div>
+        <div *ngIf="validacion.celular && validacion.mostrarError" class="text-success">Celular válido</div>
+        <div class="valid-feedback">
+          Ingrese el celular del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="TelefonoApoderado" class="text-left label_form">Teléfono</label>
+        <input type="number" name="TelefonoApoderado" class="form-control rounded" id="TelefonoApoderado_id"
+          [(ngModel)]="apoderado.telefono" (ngModelChange)="validarApoderado()" maxlength="11">
+        <div *ngIf="!validacion.telefono && validacion.mostrarError" class="text-danger">El teléfono es inválido</div>
+        <div *ngIf="validacion.telefono && validacion.mostrarError" class="text-success">Telefono válido</div>
+        <div class="valid-feedback">
+          Ingrese el telefono del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="GradoDeRelaciónApoderado" class="text-left label_form">Grado de relación</label>
+        <input type="text" name="GradoDeRelaciónApoderado" class="form-control rounded" id="GradoDeRelaciónApoderado_id"
+          [(ngModel)]="apoderado.gradoRelacion" (ngModelChange)="validarApoderado()" maxlength="11" rvalue equired>
+        <div *ngIf="!validacion.gradoRelacion && validacion.mostrarError" class="text-danger">Ingresa un Grado de
+          relación válido </div>
+        <div *ngIf="validacion.gradoRelacion && validacion.mostrarError" class="text-success">Grado de relación válido
+        </div>
+        <div class="valid-feedback">
+          Ingrese el grado de relación del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="correoElectronicoApoderado" class="text-left label_form">Correo Electrónico</label>
+        <input type="text" name="correoElectronicoApoderado" class="form-control redondeado"
+          id="correoElectronicoApoderado_id" [(ngModel)]="apoderado.correoElectronico"
+          (ngModelChange)="validarApoderado()" placeholder="Ejemplo: sofia@hotmail.com" maxlength="50">
+        <div *ngIf="!validacion.correoElectronico && validacion.mostrarError" class="text-danger">Correo electronico
+          inválido</div>
+        <div *ngIf="validacion.correoElectronico && validacion.mostrarError" class="text-success">Correo Electrónico
+          válido</div>
+        <div class="valid-feedback">
+          Ingrese el correo electrónico del apoderado.
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="brand" class="text-left label_form">Dirección</label>
+        <input type="text" name="direccion" class="form-control rounded" id="DireccionApoderado_id"
+          [(ngModel)]="apoderado.direccion" (ngModelChange)="validarApoderado()" maxlength="70" value required>
+        <div *ngIf="!validacion.direccion && validacion.mostrarError" class="text-danger">Ingresa una dirección válida
+        </div>
+        <div *ngIf="validacion.direccion && validacion.mostrarError" class="text-success">Dirección válida</div>
+      </div>
+
+      <div class="form-group col-md-4">
+
+        <div *ngFor='let estudiante of apoderado.estudiantes; let i=index;'>
+          <label class="text-left label_form">Estudiante</label>
+          <div class="form-inline padding-propio">
+            <div class="col-sm-11 col-md-10 padding-propio">
+              <select class="form-control rounded w-100" id="estudiante-id-{{i}}" name="estudiante-id-{{i}}"
+                [(ngModel)]="apoderado.estudiantes[i].id">
+                <option selected disabled value=''> Seleccionar Estudiante</option>
+                <option *ngFor='let e of estudiantes' [value]="e.id">{{e.nombres}} {{e.apellidos}}</option>
+              </select>
+            </div>
+            <div class="col-sm-1 padding-propio">
+              <button type="button" class="btn btn-eliminar-apoderado" (click)="eliminarEstudiante(i)">X</button>
+            </div>
+          </div>                
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-agregar-apoderado" (click)="agregarEstudiante()">+</button>
+        </div>            
+      </div>
+    </div>
+
+    <button *ngIf="esNuevo" type="button" class="btn-green-avanza m-2 float-right"
+      (click)="guardarApoderado()">Agregar</button>
+    <button *ngIf="!esNuevo" type="button" class="btn-green-avanza  m-2 float-right"
+      (click)="guardarApoderado()">Confirmar Cambios</button>
+    <button *ngIf="esNuevo" type="button" class="btn btn-light btn-outline-danger  m-2 float-right"
+      routerLink="/lista-apoderados">Cancelar</button>
+    <button *ngIf="!esNuevo" type="button" class="btn btn-light btn btn-outline-danger  m-2 float-right"
+      (click)="clickAtras()">Cancelar</button>
+
+
+  </form>
+
+
+</div>
