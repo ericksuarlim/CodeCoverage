@@ -22,17 +22,51 @@ fdescribe("AppComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  xit(`should have as title 'avanza'`, () => {
-    expect(component.title).toEqual("avanza");
-  });
+  // xit(`should have as title 'avanza'`, () => {
+  //   expect(component.title).toEqual("avanza");
+  // });
 
-  it("esta en pagina principal", () => {
+  it("should be at homepage", () => {
     const url = component.router.url;
     const enPaginaPrincipal = component.enPaginaPrincipal();
     if (url === "/home") {
       expect(enPaginaPrincipal).toBeTruthy();
     } else {
       expect(enPaginaPrincipal).toBeFalsy();
+    }
+  });
+  it("should be at graphics", () => {
+    const url = component.router.url;
+    const enGraficos = component.mostrarNavbarGraficos();
+    if (url == "/graphic-estudiantes" || url == "/graphic-sesiones") {
+      expect(enGraficos).toBeTruthy();
+    } else {
+      expect(enGraficos).toBeFalsy();
+    }
+  });
+  it("should not be at graphics", () => {
+    const url = component.router.url;
+    const noEnGraficos = component.noEstaEnGraficos();
+    if (url != "/graphic-estudiantes" && url != "/graphic-sesiones") {
+      expect(noEnGraficos).toBeTruthy();
+    } else {
+      expect(noEnGraficos).toBeFalsy();
+    }
+  });
+  it("should show Navbar", () => {
+    const url = component.router.url;
+    const noEnGraficos = component.mostrarNavbar();
+    if (
+      url != "/home" &&
+      url != "/" &&
+      url != "/crear-cuenta" &&
+      !url.includes("/cambiar-clave") &&
+      url != "/graphic-estudiantes" &&
+      url != "/graphic-sesiones"
+    ) {
+      expect(noEnGraficos).toBeTruthy();
+    } else {
+      expect(noEnGraficos).toBeFalsy();
     }
   });
 });

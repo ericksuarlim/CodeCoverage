@@ -25,7 +25,7 @@ const mockEstadosService = {
     this.estados = this.estados.filter((e) => e.id !== estado.id);
   },
 };
-fdescribe("DiagnosticosComponent", () => {
+fdescribe("EstadosComponent", () => {
   let component: EstadosComponent;
   //   let service: DiagnosticosService;
   let fixture: ComponentFixture<EstadosComponent>;

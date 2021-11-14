@@ -30,7 +30,7 @@ const mockDiagnosticosService = {
   },
 };
 
-describe("DiagnosticosComponent", () => {
+fdescribe("DiagnosticosComponent", () => {
   let component: DiagnosticosComponent;
   //   let service: DiagnosticosService;
   let fixture: ComponentFixture<DiagnosticosComponent>;
