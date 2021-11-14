@@ -61,4 +61,14 @@ fdescribe("EstadosComponent", () => {
     const result = await component.estadosService.obtenerEstados();
     expect(result.length).toBe(1);
   });
+
+  it("editarEstado", () => {
+    var result = component.editarEstado(1);
+    expect(result).toBeTruthy();
+  });
+  
+  it("ordenarTabla", () => {
+      var result = component.ordenarTabla();
+      expect(result).toBeTruthy();
+  });
 });
