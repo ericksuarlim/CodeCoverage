@@ -18,7 +18,6 @@ export class DiagnosticosService {
       });
       return diagnosticos;
     });
-
   }
 
   async guardarDiagnostico(diagnostico:Diagnostico, esNuevo:boolean) {
