@@ -1,24 +1,38 @@
-import { TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
+import { Router } from "@angular/router";
 
-describe("AppComponent", () => {
+fdescribe("AppComponent", () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [AppComponent],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'avanza'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual("avanza");
+  xit(`should have as title 'avanza'`, () => {
+    expect(component.title).toEqual("avanza");
+  });
+
+  it("esta en pagina principal", () => {
+    const url = component.router.url;
+    const enPaginaPrincipal = component.enPaginaPrincipal();
+    if (url === "/home") {
+      expect(enPaginaPrincipal).toBeTruthy();
+    } else {
+      expect(enPaginaPrincipal).toBeFalsy();
+    }
   });
 });
