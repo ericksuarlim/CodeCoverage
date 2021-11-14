@@ -4,7 +4,6 @@ import { DiagnosticosService } from "../../services/diagnosticos.service";
 import { DebugElement } from "@angular/core";
 import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { Diagnostico } from "../../models/diagnostico.model";
-import { COMPOSITION_BUFFER_MODE } from "@angular/forms";
 
 const mockDiagnosticosService = {
   diagnosticos: [
@@ -12,13 +11,13 @@ const mockDiagnosticosService = {
       id: "1",
       codigoColor: "#fffff",
       color: 1,
-      diagnostico: "Se va a morir",
+      diagnostico: "Rojo",
     },
     {
       id: "2",
       codigoColor: "#000000",
       color: 2,
-      diagnostico: "Sobrevive",
+      diagnostico: "Negro",
     },
   ],
   obtenerDiagnosticos(): Diagnostico[] {
@@ -65,7 +64,7 @@ describe("DiagnosticosComponent", () => {
       id: "1",
       codigoColor: "#fffff",
       color: 1,
-      diagnostico: "Se va a morir",
+      diagnostico: "Rojo",
     });
     const result = await component.diagnosticosService.obtenerDiagnosticos();
     expect(result.length).toBe(1);

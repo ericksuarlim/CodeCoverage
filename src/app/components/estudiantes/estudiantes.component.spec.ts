@@ -3,7 +3,7 @@ import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { EstudiantesComponent } from "./estudiantes.component";
 
-describe("Estudiantes Component", () => {
+fdescribe("Estudiantes Component", () => {
   let component: EstudiantesComponent;
   let fixture: ComponentFixture<EstudiantesComponent>;
   let de: DebugElement;
@@ -22,7 +22,7 @@ describe("Estudiantes Component", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
-  it("fecha", () => {
+  it("should return the date correctly", () => {
     var result = component.mostrarBienLaFecha("2020-01-01");
     expect(result).toBe("01/01/2020");
   });
